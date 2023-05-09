@@ -1,95 +1,102 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+"use client";
+import { useState } from "react";
 
 export default function Home() {
+  const [text, setText] = useState('press a key')
+  const play = (x) => {
+    const audio = new Audio(x);
+    audio.play();
+  };
+  const handleClick = (event) => {
+    const src = event.currentTarget.querySelector("audio").src;
+    const idx = event.currentTarget.querySelector("audio").id;
+    setText(idx)
+    play(src);
+  };
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.js</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <main className="d-flex bg-secondary-subtle  container-fluid vh-100 align-items-center justify-content-center">
+      <div
+        id="drum-machine"
+        className=" container-fluid d-flex align-items-center justify-content-center p-3  "
+      >
+        <div className="p-2 row ">
+          <button
+            id="Q"
+            className="drum-pad btn btn-secondary py-3 px-2 col-3 m-1 btn-sm"
+            onClick={handleClick}
           >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+            Q
+            <audio
+              id="Heater 1"
+              src="https://s3.amazonaws.com/freecodecamp/drums/Heater-1.mp3"
+            ></audio>
+          </button>
+          <button
+            id="W"
+            className="drum-pad btn btn-secondary py-3 px-2 col-3 m-1 btn-sm"
+            onClick={handleClick}
+          >
+            <audio id="Heater 2" src="https://s3.amazonaws.com/freecodecamp/drums/Heater-2.mp3"></audio>
+            W
+          </button>
+          <button
+            id="E"
+            className="drum-pad btn btn-secondary py-3 px-2 col-3 m-1 btn-sm"
+            onClick={handleClick}
+          >
+            E
+            <audio id="Heater 3" src="https://s3.amazonaws.com/freecodecamp/drums/Heater-3.mp3"></audio>
+          </button>
+          <button
+            id="A"
+            className="drum-pad btn btn-secondary py-3 px-2 col-3 m-1 btn-sm"
+            onClick={handleClick}
+          >
+            A
+            <audio id="Heater 4" src="https://s3.amazonaws.com/freecodecamp/drums/Heater-4_1.mp3"></audio>
+          </button>
+          <button
+            id="S"
+            className="drum-pad btn btn-secondary py-3 px-2 col-3 m-1 btn-sm"
+            onClick={handleClick}
+          >
+            S <audio id="Clap" src="https://s3.amazonaws.com/freecodecamp/drums/Heater-6.mp3"></audio>
+          </button>
+          <button
+            id="D"
+            className="drum-pad btn btn-secondary py-3 px-2 col-3 m-1 btn-sm"
+            onClick={handleClick}
+          >
+            D <audio id="Open-HH" src="https://s3.amazonaws.com/freecodecamp/drums/Dsc_Oh.mp3"></audio>
+          </button>
+          <button
+            id="Z"
+            className="drum-pad btn btn-secondary py-3 px-2 col-3 m-1 btn-sm"
+            onClick={handleClick}
+          >
+            Z <audio id="Kick-n-Hat" src="https://s3.amazonaws.com/freecodecamp/drums/Kick_n_Hat.mp3"></audio>
+          </button>
+          <button
+            id="X"
+            className="drum-pad btn btn-secondary py-3 px-2 col-3 m-1 btn-sm"
+            onClick={handleClick}
+          >
+            X <audio id="Kick" src="https://s3.amazonaws.com/freecodecamp/drums/RP4_KICK_1.mp3"></audio>
+          </button>
+          <button
+            id="C"
+            className="drum-pad btn btn-secondary py-3 px-2 col-3 m-1 btn-sm"
+            onClick={handleClick}
+          >
+            C <audio id="Close-HH" src="https://s3.amazonaws.com/freecodecamp/drums/Cev_H2.mp3"></audio>
+          </button>
+        </div>
+        <div className="d-flex-col">
+          <div id="display" className="px-5 py-2 bg-dark w-auto text-light">
+            {text}
+          </div>
         </div>
       </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://beta.nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
     </main>
-  )
+  );
 }
